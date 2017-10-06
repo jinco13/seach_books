@@ -1,0 +1,3 @@
+class RakutenWeb
+
+end
