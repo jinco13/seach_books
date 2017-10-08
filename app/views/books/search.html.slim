@@ -1,0 +1,6 @@
+h1 Books#search
+p Find me in app/views/books/search.html.slim
+
+= form_tag '/search', :method => 'POST', :html => { class: "ui form"} do |f|
+  = text_field_tag :title
+  = submit_tag "検索"
