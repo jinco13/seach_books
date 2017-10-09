@@ -1,6 +1,14 @@
 h1 Books#search
-p Find me in app/views/books/search.html.slim
+p = @searchstr
 
 = form_tag '/search', :method => 'POST', :html => { class: "ui form"} do |f|
-  = text_field_tag :title
+  = text_field_tag :title, @searchstr
   = submit_tag "検索"
+
+ul
+  - @list.each do |b|
+    li
+      - if b[:url] and b[:url].length > 0
+        = link_to b[:title], b[:url]
+      - else
+        = b[:title]
