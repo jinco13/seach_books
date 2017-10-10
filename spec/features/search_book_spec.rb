@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "search books" do
-  scenario "user search books on '安藤忠雄' " do
+  xscenario "user search books on '安藤忠雄' " do
     visit '/'
     fill_in "title", with: "安藤忠雄"
     click_on "検索"

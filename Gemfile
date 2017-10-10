@@ -46,6 +46,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'guard'
   gem 'guard-rspec'
+  gem 'hashie'
 end
 
 group :development do
