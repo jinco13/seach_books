@@ -9,6 +9,10 @@ ul
   - @list.each do |b|
     li
       - if b[:url] and b[:url].length > 0
-        = link_to b[:title], b[:url]
+        = link_to b[:url] do
+          = b[:title]
+          = image_tag b[:img]
+        end
       - else
         = b[:title]
+        = image_tag b[:img]

@@ -9,6 +9,7 @@ class BooksController < ApplicationController
       @list.push({
         :title => books.find{|r|r.isbn==b.isbn}.title,
         :isbn => b.isbn,
+        :img => books.find{|r|r.isbn==b.isbn}.small_image_url,
         #:reservable => b.reservable?,
         :url => b.libraries[0].url
       })
