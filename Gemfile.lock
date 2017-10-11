@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/jinco13/calil_api.git
-  revision: cddc1d9a5885998566dfd01a488ea4140fdd6d60
+  revision: f404978199056c2b4a030f790d4130c2977c350e
   specs:
     calil_api (0.1.0)
 
@@ -70,7 +70,7 @@ GEM
     concurrent-ruby (1.0.5)
     crass (1.0.2)
     diff-lcs (1.3)
-    erubi (1.6.1)
+    erubi (1.7.0)
     execjs (2.7.0)
     factory_girl (4.8.1)
       activesupport (>= 3.0.0)
@@ -202,7 +202,7 @@ GEM
     slim (3.0.8)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 1.3.3, < 2.1)
-    slim-rails (3.1.2)
+    slim-rails (3.1.3)
       actionpack (>= 3.1)
       railties (>= 3.1)
       slim (~> 3.0)
