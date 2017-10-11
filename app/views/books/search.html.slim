@@ -1,18 +1,26 @@
 h1 Books#search
-p = @searchstr
 
 = form_tag '/search', :method => 'POST', :html => { class: "ui form"} do |f|
   = text_field_tag :title, @searchstr
   = submit_tag "検索"
 
+- if @searchstr
+    h2 "#{@searchstr}"の検索結果: #{@list.count}件
+
 ul
   - @list.each do |b|
     li
-      - if b[:url] and b[:url].length > 0
-        = link_to b[:url] do
-          = b[:title]
-          = image_tag b[:img]
+      - if b.url and b.url.length > 0
+        = link_to b.url do
+          = b.title
+          = image_tag b.small_img
         end
       - else
-        = b[:title]
-        = image_tag b[:img]
+        = b.title
+        = image_tag b.small_img
+      = b.price
+      = b.author
+      = b.publisher
+      = link_to "Amazon", "http://www.amazon.co.jp/dp/#{b.asin}", {:target => '_blank'}
+      | &nbsp;
+      = link_to "Rakuten", b.rb_url, {:target => '_blank'}
