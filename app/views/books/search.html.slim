@@ -21,6 +21,7 @@ ul
       = b.price
       = b.author
       = b.publisher
+      = b.review_avg
       = link_to "Amazon", "http://www.amazon.co.jp/dp/#{b.asin}", {:target => '_blank'}
       | &nbsp;
       = link_to "Rakuten", b.rb_url, {:target => '_blank'}

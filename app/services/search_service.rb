@@ -1,17 +1,20 @@
 module SearchService
   class Book
-    attr_reader :url, :title, :author, :publisher, :isbn, :small_img, :large_img, :price, :rb_url
+    attr_reader :url, :title, :author, :publisher, :isbn, :small_img, :large_img, \
+          :price, :rb_url, :review_count, :review_avg
 
     def initialize(rws_book, url)
-      @url        = url
-      @title      = rws_book.title
-      @author     = rws_book.author
-      @publisher  = rws_book.publisher_name
-      @isbn       = rws_book.isbn
-      @small_img  = rws_book.small_image_url
-      @large_img  = rws_book.large_image_url
-      @price      = rws_book.item_price
-      @rb_url     = rws_book.item_url
+      @url           = url
+      @title         = rws_book.title
+      @author        = rws_book.author
+      @publisher     = rws_book.publisher_name
+      @isbn          = rws_book.isbn
+      @small_img     = rws_book.small_image_url
+      @large_img     = rws_book.large_image_url
+      @price         = rws_book.item_price
+      @rb_url        = rws_book.item_url
+      @review_count  = rws_book.review_count
+      @review_avg    = rws_book.review_average
     end
 
     def asin
@@ -28,11 +31,11 @@ module SearchService
       if chk_tmp == 10
         chk_digit = 'x'
       elsif chk_tmp == 11
-        chk_digit = 0;
+        chk_digit = 0
       else
         chk_digit = chk_tmp
       end
-      
+
       digits.push(chk_digit)
       return digits.join("")
     end
