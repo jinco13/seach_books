@@ -5,7 +5,6 @@ class BooksController < ApplicationController
       session[:search_title] = params[:title]
     end
     @searchstr = params[:title]
-    puts("SESSION:"+session[:mylib])
     @list = SearchService.search(session[:search_title], session[:mylib])
   end
 
