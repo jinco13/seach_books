@@ -44,14 +44,14 @@ module SearchService
 
   module_function
 
-  def search(params)
+  def search(params, libs)
     list = []
 
     books = RakutenWebService::Books::Book.search(title: params)
-    tosho = CalilApi::Book.search(books.collect{|b|b.isbn}, ['Tokyo_Setagaya'])
+    tosho = CalilApi::Book.search(books.collect{|b|b.isbn}, libs.split(';'))
 
     books.each do |b|
-      url = tosho.find{|t|t.isbn==b.isbn}.url
+      url = tosho.find(Proc.new{""}){|t|t.isbn==b.isbn}.url
       list.push(SearchService::Book.new(b, url))
     end
     return list

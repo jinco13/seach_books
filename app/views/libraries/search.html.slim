@@ -1,0 +1,15 @@
+h1 Libraries#search
+
+= form_tag '/library', :method => 'POST', :html => { class: "ui form"} do |f|
+  = text_field_tag :city, @searchstr
+  = select_tag :pref, options_for_select(@pref_options)
+  = submit_tag "検索"
+
+= form_tag '/select_library', :method => 'POST'
+  ul
+    - @libraries.each do |lib|
+        li
+          = check_box_tag 'lib[]', lib.systemid, false
+          | #{lib.short} #{lib.address} #{lib.url_pc}
+
+  = submit_tag "選択"
