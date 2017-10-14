@@ -11,7 +11,7 @@ h1 Libraries#search
   ul
     - @libraries.each do |lib|
         li
-          = check_box_tag 'lib[]', lib.systemid, false, {:id => "lib_#{lib.libid}"}
+          = radio_button_tag 'mylib', lib.systemid+";"+lib.short, false, {:id => "lib_#{lib.libid}"}
           | #{lib.short} #{lib.address} #{lib.url_pc}
 
   = submit_tag "選択"

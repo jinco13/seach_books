@@ -24,7 +24,9 @@ feature "library search" do
       fill_in 'city', with: "上尾"
       select '埼玉県', from: 'pref'
       click_on '検索'
-      check 'lib_1'
+      choose 'lib_1'
+      click_on '選択'
+      expect(page).to have_content('を検索先として登録しました。')
     end
   end
 
