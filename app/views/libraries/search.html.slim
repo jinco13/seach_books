@@ -1,4 +1,6 @@
 h1 Libraries#search
+.notice
+  = flash[:info]
 
 = form_tag '/library', :method => 'POST', :html => { class: "ui form"} do |f|
   = text_field_tag :city, @searchstr

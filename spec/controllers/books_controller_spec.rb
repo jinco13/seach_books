@@ -4,6 +4,7 @@ RSpec.describe BooksController, type: :controller do
 
   describe "GET #search" do
     before do
+      session[:mylib] = "Setagaya_Tokyo"
       allow(SearchService).to receive(:search).and_return([])
     end
 
