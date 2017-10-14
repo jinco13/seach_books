@@ -32,17 +32,17 @@ describe "Search Service" do
     end
 
     it "should be able to search books from search service" do
-      result = SearchService.search("ハーバード")
+      result = SearchService.search("ハーバード",['Setagaya_Tokyo'])
       expect(result.count).to eq(2)
     end
 
     it "should convert isbn13 to isbn10 for amazon url" do
-      result = SearchService.search("ハーバード")
+      result = SearchService.search("ハーバード",['Setagaya_Tokyo'])
       expect(result[0].asin).to eq("4763135201")
     end
 
     it "should convert isbn13 to isbn10 for amazon url" do
-      result = SearchService.search("ハーバード")
+      result = SearchService.search("ハーバード",['Setagaya_Tokyo'])
       expect(result[1].asin).to eq("4532318424")
     end
   end
