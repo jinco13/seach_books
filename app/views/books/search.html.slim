@@ -11,7 +11,7 @@ ul
   - @list.each do |b|
     li
       - if b.url and b.url.length > 0
-        = link_to b.url do
+        = link_to b.url, {:target => '_blank'} do
           = b.title
           = image_tag b.small_img
         end
