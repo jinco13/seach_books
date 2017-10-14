@@ -1,4 +1,6 @@
 h1 Books#search
+.notice
+  = flash[:info]
 
 = form_tag '/search', :method => 'POST', :html => { class: "ui form"} do |f|
   = text_field_tag :title
