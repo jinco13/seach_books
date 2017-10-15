@@ -1,7 +1,7 @@
 h1 Books#search
 .notice
   = flash[:info]
-  
+
 = form_tag '/search', :method => 'POST', :html => { class: "ui form"} do |f|
   = text_field_tag :title, @searchstr
   = submit_tag "検索"
@@ -12,18 +12,34 @@ h1 Books#search
 ul
   - @list.each do |b|
     li
-      - if b.url and b.url.length > 0
-        = link_to b.url, {:target => '_blank'} do
-          = b.title
-          = image_tag b.small_img
-        end
-      - else
-        = b.title
-        = image_tag b.small_img
-      = b.price
-      = b.author
-      = b.publisher
-      = b.review_avg
-      = link_to "Amazon", "http://www.amazon.co.jp/dp/#{b.asin}", {:target => '_blank'}
-      | &nbsp;
-      = link_to "Rakuten", b.rb_url, {:target => '_blank'}
+      .uk-grid
+        .uk-width-auto
+          = image_tag b.medium_img
+        .uk-width-expand
+          dl.uk-description-list.uk-description-list-divider
+            dt
+              h5
+                - if b.url and b.url.length > 0
+                  = link_to b.url, {:target => '_blank'} do
+                    = b.title
+                  end
+                - else
+                  = b.title
+            dd.uk-text-small
+              strong Price:
+              = b.price
+              br
+              strong Author:
+              = b.author
+              br
+              strong Publisher:
+              = b.publisher
+              br
+              strong Rakuten Review:
+              = b.review_avg
+              br
+              = link_to "http://www.amazon.co.jp/dp/#{b.asin}", {:target => '_blank'} do
+                span uk-icon="icon: info"
+              end
+              | &nbsp;
+              = link_to "Rakuten", b.rb_url, {:target => '_blank'}

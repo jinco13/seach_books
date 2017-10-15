@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'font-awesome-rails'
 gem 'slim-rails'
 gem 'calil_api', :git => 'git://github.com/jinco13/calil_api.git'
 gem 'rakuten_web_service'
