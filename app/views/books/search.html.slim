@@ -1,24 +1,23 @@
-h1 Books#search
 .notice
   = flash[:info]
 
 = form_tag '/search', :method => 'POST', :html => { class: "ui form"} do |f|
-  = text_field_tag :title, @searchstr
-  = submit_tag "検索"
+    = text_field_tag :title, @searchstr, {class: 'uk-input uk-form-width-medium'}
+    = submit_tag "検索", {class: 'uk-button uk-button-primary'}
 
 - if @searchstr
     h2 "#{@searchstr}"の検索結果: #{@list.count}件
 
-ul
+ul style='list-style-type:none;'
   - @list.each do |b|
-    li
+    li style='padding-bottom: 15px;padding-top: 15px; border-bottom: 1px solid #f1f1ed;'
       .uk-grid
         .uk-width-auto
           = image_tag b.medium_img
         .uk-width-expand
           dl.uk-description-list.uk-description-list-divider
             dt
-              h5
+              h5 style='margin-bottom: 3px;'
                 - if b.url and b.url.length > 0
                   = link_to b.url, {:target => '_blank'} do
                     = b.title
@@ -38,6 +37,10 @@ ul
               strong Rakuten Review:
               = b.review_avg
               br
+              - if b.url and b.url.length > 0
+                = link_to b.url, {:target => '_blank'} do
+                  = fa_icon 'building-o'
+              | &nbsp;
               = link_to "http://www.amazon.co.jp/dp/#{b.asin}", {:target => '_blank'} do
                 = fa_icon 'amazon'
               end
