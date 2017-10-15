@@ -39,7 +39,9 @@ ul
               = b.review_avg
               br
               = link_to "http://www.amazon.co.jp/dp/#{b.asin}", {:target => '_blank'} do
-                span uk-icon="icon: info"
+                = fa_icon 'amazon'
               end
               | &nbsp;
-              = link_to "Rakuten", b.rb_url, {:target => '_blank'}
+              = link_to b.rb_url, {:target => '_blank'} do
+                = fa_icon 'shopping-cart'
+              end
