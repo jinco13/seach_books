@@ -10,7 +10,8 @@ class BooksController < ApplicationController
   end
 
   def index
-
+    @list = []
+    render :search
   end
 
   private
