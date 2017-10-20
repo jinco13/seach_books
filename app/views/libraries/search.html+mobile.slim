@@ -1,0 +1,21 @@
+.notice
+  = flash[:info]
+
+= form_tag '/library', :method => 'POST', :html => { class: "ui form"} do |f|
+  = select_tag :pref, options_for_select(@pref_options), {class: 'uk-select uk-form-width-medium'}
+  = text_field_tag :city, @searchstr, {class: 'uk-input uk-form-width-medium'}
+  = submit_tag "検索", {class: 'uk-button uk-button-primary'}
+
+= form_tag '/select_library', :method => 'POST'
+  ul style="list-style-type: none"
+    - @libraries.each do |lib|
+        li
+          = radio_button_tag 'mylib', lib.systemid+";"+lib.short, false, {:id => "lib_#{lib.libid}", class: 'uk-radio'}
+          | #{lib.short}
+          br
+          | #{lib.address}
+          br
+          | #{lib.url_pc}
+          hr
+  - if @libraries.count > 0
+    = submit_tag "選択", {class: 'uk-button uk-button-primary'}

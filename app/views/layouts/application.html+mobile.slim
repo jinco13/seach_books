@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    title SearchBooks
+    = csrf_meta_tags
+    meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    nav.uk-navbar-container.uk-margin
+      navbar
+        .uk-navbar-center
+          .uk-navbar-center-left
+            ul.uk-navbar-nav
+              li.uk-active
+                a href="#" Active
+                  li
+                    a href="#" Parent
+                      .uk-navbar-dropdown
+                        ul.uk-nav.uk-navbar-dropdown-nav
+                          li.uk-active
+                            a href="#" Active
+                          li
+                            a href="#" Item
+                          li
+                            a href="#" Item
+          a.uk-navbar-item.uk-logo href="/" Book Search
+          .uk-navbar-center-right
+            .ul.uk-navbar-nav
+              li
+                a href="#" Item
+    .uk-container
+      | 検索対象：#{session[:mylib_name]}
+      = yield

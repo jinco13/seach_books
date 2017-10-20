@@ -1,0 +1,49 @@
+.notice
+  = flash[:info]
+
+= form_tag '/search', :method => 'POST', :html => { class: "ui form"} do |f|
+    = text_field_tag :title, @searchstr, {class: 'uk-input uk-form-width-medium'}
+    button.uk-button.uk-button-primary type="submit" 検索
+
+- if @searchstr
+    h4 "#{@searchstr}"の検索結果: #{@list.count}件
+
+ul style='list-style-type:none; padding: 0;'
+  - @list.each do |b|
+    li style='padding-bottom: 15px;padding-top: 15px; border-bottom: 1px solid #f1f1ed;'
+      .uk-grid.uk-grid-small.uk-child-width-expand
+        .uk-width-auto
+          = image_tag b.medium_img
+        .uk-width-expand
+          div
+            strong style='margin-bottom: 3px;'
+              - if b.url and b.url.length > 0
+                = link_to b.url, {:target => '_blank'} do
+                  = b.title
+                end
+              - else
+                = b.title
+          div
+            strong 価格:
+            = number_to_currency b.price, unit: "￥", seperator: ",", delimiter: "", precision: 0
+            br
+            strong 著者:
+            = b.author
+            br
+            strong 出版社:
+            = b.publisher
+            br
+            strong 楽天評価:
+            = b.review_avg
+            br
+            - if b.url and b.url.length > 0
+              = link_to b.url, {:target => '_blank'} do
+                = fa_icon 'building-o', text: '図書館'
+              br
+            = link_to "http://www.amazon.co.jp/dp/#{b.asin}", {:target => '_blank'} do
+              = fa_icon 'amazon', text: 'Amazon'
+            end
+            br
+            = link_to b.rb_url, {:target => '_blank'} do
+              = fa_icon 'shopping-cart', text: 'Rakuten'
+            end
