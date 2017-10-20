@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  include RespondToMobileRequests
   before_action :check_library
 
   def search
@@ -7,11 +8,19 @@ class BooksController < ApplicationController
     end
     @searchstr = params[:title]
     @list = SearchService.search(session[:search_title], session[:mylib])
+    respond_to do |format|
+      format.html.mobile
+      format.html
+    end
   end
 
   def index
     @list = []
     render :search
+    respond_to do |format|
+      format.html.mobile
+      format.html
+    end
   end
 
   private

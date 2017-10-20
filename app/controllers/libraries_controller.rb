@@ -1,4 +1,6 @@
 class LibrariesController < ApplicationController
+  include RespondToMobileRequests
+
   def search
     @pref_options = ['埼玉県','東京都','神奈川県']
     @city = params[:city]
@@ -6,6 +8,10 @@ class LibrariesController < ApplicationController
     @libraries = []
     if @city and @pref
       @libraries = CalilApi::Library.search(:pref => @pref, :city => @city)
+    end
+    respond_to do |format|
+      format.html.mobile
+      format.html
     end
   end
 
