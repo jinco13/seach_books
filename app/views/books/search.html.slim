@@ -26,7 +26,7 @@ ul style='list-style-type:none;'
                   = b.title
             dd.uk-text-small
               strong 価格:
-              = b.price
+              = number_to_currency b.price, unit: "￥", seperator: ",", delimiter: "", precision: 0
               br
               strong 著者:
               = b.author
