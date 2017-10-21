@@ -8,5 +8,5 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     .uk-container
-      | 図書館： #{session[:mylib_name]}
+      | 検索対象：#{session[:mylib_name]}
       = yield
