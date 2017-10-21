@@ -2,7 +2,7 @@
   = flash[:info]
 
 = form_tag '/search', :method => 'POST', :html => { class: "ui form"} do |f|
-    = text_field_tag :title, @searchstr, {class: 'uk-input uk-form-width-medium'}
+    = text_field_tag :title, @searchstr, {class: 'uk-input uk-form-width-large'}
     = submit_tag "検索", {class: 'uk-button uk-button-primary'}
 
 - if @searchstr
@@ -25,16 +25,16 @@ ul style='list-style-type:none;'
                 - else
                   = b.title
             dd.uk-text-small
-              strong Price:
+              strong 価格:
               = b.price
               br
-              strong Author:
+              strong 著者:
               = b.author
               br
-              strong Publisher:
+              strong 出版社:
               = b.publisher
               br
-              strong Rakuten Review:
+              strong 楽天評価:
               = b.review_avg
               br
               - if b.url and b.url.length > 0
